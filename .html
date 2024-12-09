@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizvraag</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            text-align: center;
+        }
+        .quiz-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Quizvraag</h1>
+        <p>Bij welke godin hoort het standbeeld?</p>
+        <form id="quizForm">
+            <input type="text" id="answer" placeholder="Typ je antwoord hier...">
+            <br>
+            <button type="submit">Verstuur</button>
+        </form>
+        
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Haal het antwoord van de leerling op
+            var answer = document.getElementById('answer').value.trim().toLowerCase();
+            var feedback = document.getElementById('feedback');
+            
+            if (answer === "aphrodite") {
+                feedback.innerHTML = "Correct! spreek de volgende code voor de deur tegenover het standbeeld 812776321.";
+                feedback.classList.remove('incorrect');
+                feedback.classList.add('correct');
+            } else {
+                feedback.innerHTML = "Fout! Je moet nog even verder zoeken naar hints in de kamer.";
+                feedback.classList.remove('correct');
+                feedback.classList.add('incorrect');
+            }
+        });
+    </script>
+
+</body>
+</html>
